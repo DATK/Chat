@@ -1,19 +1,38 @@
-import requests as r
+from flask import Flask, request
 
 
-class Send_ms:
-    """This class sending message"""
+def read_mes_file(file="db.txt"):
+    with open(file, "r", encoding="UTF-8") as f:
+        txt = f.read()
+    return txt
 
-    def __init__(self, server_adres="http://192.168.0.14:5000/API/fr2"):
-        self.server_adres = server_adres
 
-    def send(self,text):
-        r.post(self.server_adres, json={'messange': text})
+def add_text_to_file(file="db.txt", txt=""):
+    with open(file, "w", encoding="UTF-8") as f:
+        f.write(txt)
 
-    def chek_work_hsot(self):
-        if r.get("http://192.168.0.14:5000/chek_wrk_host"):
-            return True
-        else:
-            return False
-    
 
+def clear(file="db.txt"):
+    with open(file, "w", encoding="UTF-8") as f:
+        f.write("")
+
+
+app = Flask(__name__)
+
+
+@app.route("/chek_wrk_host")
+def work():
+    return "It_is workin"
+
+
+@app.route("/API/fr2", methods=['POST'])
+def messeage():
+    print(request.json)
+    add_text_to_file(txt=request.json["messange"])
+    return '1'
+
+@app.route("/API/fr2rd", methods=["GET"])
+def messeage_read():
+    return read_mes_file()
+
+app.run(host="0.0.0.0", debug=True)
