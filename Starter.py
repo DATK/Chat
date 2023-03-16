@@ -1,7 +1,7 @@
 from src import send_message as gm
 import subprocess
 
-subprocess.call("cm.bat")
+#subprocess.call("cm.bat")
 
 cls=gm.Send_ms()
 
@@ -14,15 +14,17 @@ st = input("Do you want to connect(yes or no): ")
 
 def start():
     if cls.chek_work_hsot()==True:
-        #subprocess.call("read.exe")
         text=input("Введите ваше сообщение... ")
         cls.send(text)
+        return True
     else:
         print("Sory, host is dont working")
+        return False
         
     
 if st.lower()=="yes":
-    while True:
+    tmp=input("Запустите пожалуйса файл read.exe для чтения записей, спасибо")
+    while start()!=False:
         start()
 else:
     print("stoping... ")
