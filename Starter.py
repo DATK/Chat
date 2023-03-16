@@ -16,7 +16,7 @@ name=input("Enter Your Name: ")
 def start():
     if cls.chek_work_hsot()==True:
         text=input("Input text >>>>>> ")
-        text="_"+name+"_"+"told_"+text
+        text="_"+name+"_"+"told_>>>"+text
         text_s=sh.cezar(text=text,key=3)
         sh.cls()
         cls.send(text_s)
