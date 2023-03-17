@@ -5,3 +5,5 @@ now in local on all pc you start starter.py, before input first messange, start 
 all
 in starter you write
 from get... you read
+
+Location of Server better change in another folder
