@@ -26,7 +26,7 @@ def start():
         sh.cls()
         try:
             cls.send(text=text_s,id=id)
-        finally:
+        except:
             print("Try to connetct srver-->")
             time.sleep(7)
         return True
