@@ -25,14 +25,16 @@ def work():
     return "It_is workin"
 
 
-@app.route("/API/fr2", methods=['POST'])
-def messeage():
+@app.route("/API/fr2/<path:id>", methods=['POST'])
+def messeage(id):
     print(request.json)
-    add_text_to_file(txt=request.json["messange"])
-    return '1'
+    add_text_to_file(txt=request.json["messange"],file=id+".txt")
+    return "Sory, it is not working"
 
-@app.route("/API/fr2rd", methods=["GET"])
-def messeage_read():
-    return read_mes_file()
+
+@app.route("/API/fr2rd/<path:id>", methods=["GET"])
+def messeage_read(id):
+    return read_mes_file(file=id+".txt")
+
 
 app.run(host="0.0.0.0", debug=True)

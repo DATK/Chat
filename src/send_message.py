@@ -7,8 +7,8 @@ class Send_ms:
     def __init__(self, server_adres=cnf.url_post):
         self.server_adres = server_adres
 
-    def send(self,text):
-        r.post(self.server_adres, json={'messange': text})
+    def send(self,text,id):
+        r.post(f"{self.server_adres}/{id}", json={'messange': text})
 
     def chek_work_hsot(self):
         if r.get(cnf.url_chek):
