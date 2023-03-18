@@ -1,4 +1,4 @@
-alf = "QWERTYUIOPASDFGHJKLZXCVBNMabc\"defghiЙФЯЧЫЦУК.АВСМИПЕНР\ТЬОГШЩДЛБЮЖЗХЭЪЬjklm/nopqrstuvwxy\'z123456789_йфячыцувсмипакен|ртьогшлб,юдщзжэхъ*-+=*&:;?!@"
+alf = "QWERTYUIOPASDFGHJ(KLZXCVBNMabc\"defghiЙФЯЧЫЦУК.АВСМИПЕНРТЬОГШЩДЛБЮЖЗХЭЪЬjk)lm/nopqrstuvwxy'z1234567)89_йфячыцувсмипакен|ртьогшлб,юдщзжэхъ*-+=*&:;?!@"
 cezar_shifr, cezar_un = [], []
 
 
@@ -36,6 +36,3 @@ def cls():
     cezar_shifr.clear()
     cezar_un.clear()
     return cezar_shifr, cezar_un
-
-
-

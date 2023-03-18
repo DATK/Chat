@@ -1,11 +1,19 @@
 import requests as r
-import time
-from src import conf as cnf
 from src import sh
+import time
+import json
 
-with open("C:/Users/Documents", "r", encoding="UTF-8") as f:
+
+
+with open(r"C:/Users/Public/Documents/urls.txt", "r", encoding="UTF-8") as fi:
+    urls = json.load(fi)
+
+url_get = urls["get"]
+
+with open(r"C:\Users\Public\Documents\id.txt", "r", encoding="UTF-8") as f:
     id = f.read()
-url_id=f"{cnf.url_get}/{id}"
+
+url_id = f"{url_get}/{id}"
 
 
 def reading():
@@ -19,7 +27,6 @@ def reading():
         f1 = sh.cezar_unsc(text=f, key=3)
         sh.cls()
         print("### ", f1, " ###")
-        print("------------------------------------------")
 
-
-reading()
+if __name__=="__main__":
+    reading()
