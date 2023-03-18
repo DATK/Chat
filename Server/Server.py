@@ -27,8 +27,11 @@ def work():
 
 @app.route("/API/fr2/<path:id>", methods=['POST'])
 def messeage(id):
-    print(request.json)
-    add_text_to_file(txt=request.json["messange"],file=id+".txt")
+    #print(request.json)
+    if len(request.json["messange"])>=200:
+        add_text_to_file(txt='5uvnryuo"zvЯoxo',file=id+".txt")
+    else:
+        add_text_to_file(txt=request.json["messange"],file=id+".txt")
     return "Sory, it is not working"
 
 

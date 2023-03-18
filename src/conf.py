@@ -7,14 +7,12 @@ id = "db"
 """
 
 
+url_post = input("Press url to send>>> ")
+url_get = input("Press url to get>>> ")
+url_post = f"{url_post}/API/fr2"
+url_get = f"{url_get}/API/fr2rd"
 
-url_post=input("Press url to send>>> ")
-url_get=input("Press url to get>>> ")
-url_post=f"{url_post}/API/fr2"
-url_get=f"{url_post}/API/fr2rd"
+urls = {"pst": url_post, "get": url_get}
 
-urls={"pst": url_post,"get": url_get}
-
-with open("C:/Users/Public/Documents/urls.txt","w",encoding="UTF-8") as fi:
-    json.dump(urls,fi)
-    
+with open("C:/Users/Public/Documents/urls.txt", "w", encoding="UTF-8") as fi:
+    json.dump(urls, fi)
