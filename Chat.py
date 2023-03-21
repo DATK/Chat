@@ -1,15 +1,11 @@
 """I is will be GUI in future"""
-
-
-
-
-
 import tkinter as tk
 from src import send_message as sm
 import time
 from src import sh
 import get_message as gm
 cls = sm.Send_ms()
+
 
 def start():
     text = input("Input text >>>>>> ")
@@ -28,7 +24,7 @@ def get_name():
     if nm:
         return nm
     else:
-        nm="Ghost"
+        nm = "Ghost"
         return nm
 
 
@@ -42,14 +38,13 @@ def get_id():
             f.write("db")
 
 
-
 window = tk.Tk()
 
 window.geometry("800x600+440+100")
 id = tk.Entry(window)
 name = tk.Entry(window)
-tk.Label(window,text="Enter id:").grid(row=0, column=0, stick="we")
-tk.Label(window,text="Your name:").grid(row=1, column=0, stick="we")
+tk.Label(window, text="Enter id:").grid(row=0, column=0, stick="we")
+tk.Label(window, text="Your name:").grid(row=1, column=0, stick="we")
 id.grid(row=0, column=1, stick="we")
 name.grid(row=1, column=1, stick="we")
 window.columnconfigure(0, minsize=100)

@@ -19,11 +19,14 @@ def clear(file="db.txt"):
 
 app = Flask(__name__)
 
+@app.route("/")
+def wo():
+    return "It_is workin"
 
 @app.route("/chek_wrk_host")
 def work():
     return "It_is workin"
-
+#chatflsdt.ddns.net
 
 @app.route("/API/fr2/<path:id>", methods=['POST'])
 def messeage(id):
@@ -40,4 +43,4 @@ def messeage_read(id):
     return read_mes_file(file=id+".txt")
 
 
-app.run(host="0.0.0.0", debug=True)
+app.run(host="0.0.0.0")
