@@ -23,10 +23,6 @@ app = Flask(__name__)
 def wo():
     return "It_is workin"
 
-@app.route("/chek_wrk_host")
-def work():
-    return "It_is workin"
-#chatflsdt.ddns.net
 
 @app.route("/API/fr2/<path:id>", methods=['POST'])
 def messeage(id):

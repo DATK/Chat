@@ -1,8 +1,9 @@
 alf = "QWERTYUIOPASDFGHJ(KLZXCVBNMabc\"defghiЙФЯЧЫЦУК.АВСМИПЕНРТ\ЬОГШЩДЛБЮЖЗХЭЪjklm/nopqr stuvwxy'z1234567)89_йф0ячыцувсмипакен|ртогшлб,юдщьзжэхъ*-+=&:;?!@"
-cezar_shifr, cezar_un = [], []
+
 
 
 def cezar(text, alf=alf, key=2):
+    cezar_shifr=[]
     for j in range(len(text)):
         for i in range(len(alf)):
             # print(i,j)
@@ -20,6 +21,7 @@ def cezar(text, alf=alf, key=2):
 
 
 def cezar_unsc(text, alf=alf, key=2):
+    cezar_un=[]
     for j in range(len(text)):
         for i in range(len(alf)):
             # print(i,j)
@@ -34,9 +36,6 @@ def cezar_unsc(text, alf=alf, key=2):
     return ''.join(cezar_un)
 
 
-def cls():
-    cezar_shifr.clear()
-    cezar_un.clear()
-    return cezar_shifr, cezar_un
+
 
 

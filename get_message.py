@@ -18,14 +18,13 @@ url_id = f"{url_get}/{id}"
 
 def reading():
     while True:
-        time.sleep(5)
+        time.sleep(3)
         try:
             f = r.get(url_id).text
         except:
             print("No connect, try to connect again")
             continue
         f1 = sh.cezar_unsc(text=f, key=3)
-        sh.cls()
         print("### ", f1, " ###")
 
 if __name__=="__main__":

@@ -21,7 +21,6 @@ def start():
     text = input("Input text >>>>>> ")
     text = "_"+name+"_"+"told_>>>"+text
     text_s = sh.cezar(text=text, key=3)
-    sh.cls()
     try:
         cls.send(text=text_s, id=id)
     except:
