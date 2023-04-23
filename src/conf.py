@@ -7,12 +7,15 @@ id = "db"
 """
 
 
-def add(url_post, url_get):
-    url_post = f"{url_post}/API/fr2"
-    url_get = f"{url_get}/API/fr2rd"
-    urls = {"pst": url_post, "get": url_get}
-    with open(r"C:/Users/Public/Documents/urls.txt", "w", encoding="UTF-8") as fi:
-        json.dump(urls, fi)
+def add(ip):
+    url_rul=f"{ip}/get/rules"
+    url_post = f"{ip}/API/fr2"
+    url_get = f"{ip}/API/fr2rd"
+    url_reg = f"{ip}/reg/weqff/23rfew"
+    url_inp = f"{ip}/in/weqff/23rfew"
+    urls = {"pst": url_post, "get": url_get, "reg": url_reg, "in": url_inp,"rl":url_rul}
+    with open(r"C:/Users/Public/Documents/urls.txt", "w", encoding="UTF-8") as f:
+        json.dump(urls, f)
     return """Succses
 Enter to exit"""
 
@@ -32,4 +35,4 @@ if x == "1":
     a = input("....")
 else:
     ip = input("Enter IP: ")
-    add(ip, ip)
+    add(ip)

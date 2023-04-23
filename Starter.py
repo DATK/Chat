@@ -1,23 +1,43 @@
-from src import send_message as gm
+from src import send_message as sm
 import time
 from src import sh
+""""
 
 
-cls = gm.Send_ms()
+THIS DONT USE
+OLD 
+
+
+"""
+
+cls = sm.Send_ms()
 
 print("Hello in the my chat")
 
-st = input("Do you want to connect(yes or no): ")
-name = input("Enter Your Name: ")
-id = input("Enter id: ")
-input("""Please, start read.exe and Separate with underscore because shifrovanie not ideal
-and please dont use symbols : ; ? ! @, because may be error(press Enter) """)
-with open(r"C:\Users\Public\Documents\id.txt", "w", encoding="UTF-8") as f:
-    f.write(id)
 
 
 
-def start():
+def sign_in_up(name):
+    if input("reg(1) or login(2): ") == "1":
+        print("Will be use your name...")
+        password = input("Enter password")
+        cls.reg(name, password)
+        print("Sucses")
+    else:
+        id = input("Enter id: ")
+        with open(r"C:\Users\Public\Documents\id.txt", "w", encoding="UTF-8") as f:
+            f.write(id)
+        password = input("Enter password: ")
+        if cls.ins(name, password) == "sc":
+            print("sucs")
+            while start(id) != False:
+                start(id)
+        else:
+            print("NO")
+            input("please restart app: ")
+            exit()
+
+def start(id):
     text = input("Input text >>>>>> ")
     text = "_"+name+"_"+"told_>>>"+text
     text_s = sh.cezar(text=text, key=3)
@@ -28,8 +48,5 @@ def start():
         time.sleep(7)
 
 
-
-while start() != False:
-    start()
-
-
+name = input("Enter Your Name: ")
+sign_in_up(name)
