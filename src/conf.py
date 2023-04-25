@@ -8,12 +8,14 @@ id = "db"
 
 
 def add(ip):
-    url_rul=f"{ip}/get/rules"
+    url_rul = f"{ip}/get/rules"
     url_post = f"{ip}/API/fr2"
     url_get = f"{ip}/API/fr2rd"
     url_reg = f"{ip}/reg/weqff/23rfew"
     url_inp = f"{ip}/in/weqff/23rfew"
-    urls = {"pst": url_post, "get": url_get, "reg": url_reg, "in": url_inp,"rl":url_rul}
+    url_fn = f"{ip}/chng/qwdas/2312/fewsd33/s"
+    urls = {"pst": url_post, "get": url_get, "reg": url_reg,
+            "in": url_inp, "rl": url_rul, "fn": url_fn}
     with open(r"C:/Users/Public/Documents/urls.txt", "w", encoding="UTF-8") as f:
         json.dump(urls, f)
     return """Succses

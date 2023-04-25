@@ -75,4 +75,18 @@ def messeage_read(id):
     return read_mes_file(file=id+".txt")
 
 
+@app.route("/chng/qwdas/2312/fewsd33/s", methods=['POST'])
+def chng():
+    js = request.json
+    usr = User(js["name"], js["password"])
+    if usr.chek_usr() == False:
+        if "del" in js["move"]:
+            usr.del_user()
+            return "Delete sucs"
+        else:
+            return usr.fc(js["move"])
+    else:
+        return "No this user"
+
+
 app.run(host="0.0.0.0", debug=True)
