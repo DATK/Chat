@@ -61,7 +61,7 @@ class User:
 
     def fc(self, dc):
         if dc == {}:
-            return "100"
+            return "no this function"
         else:
             if "name" in dc:
                 name = dc["name"]
@@ -95,3 +95,5 @@ class User:
                 with open("D:/ZAPROSI/zpr.txt", "a", encoding="UTF-8") as f:
                     f.write(f"#__{self.name}-READ_AND_WRITE___#")
                 return "Wait, maybe i chage your rules"
+            
+        
