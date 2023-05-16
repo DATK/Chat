@@ -67,14 +67,17 @@ class User:
                 name = dc["name"]
                 with open(self.database_users, "r", encoding="UTF-8") as f:
                     usr = json.load(f)
-                usr[f"name__{name}__"], usr[f"password__{name}__"], usr[f"rules__{name}__"] = name, usr[
-                    f"password__{self.name}__"], usr[f"rules__{self.name}__"]
-                del usr[f"name__{self.name}__"]
-                del usr[f"password__{self.name}__"]
-                del usr[f"rules__{self.name}__"]
-                with open(self.database_users, "w", encoding="UTF-8") as f:
-                    usr = json.dump(usr, f)
-                return "Name change sucs"
+                if f"name__{name}__" in usr:
+                    return "Name using"
+                else:    
+                    usr[f"name__{name}__"], usr[f"password__{name}__"], usr[f"rules__{name}__"] = name, usr[
+                        f"password__{self.name}__"], usr[f"rules__{self.name}__"]
+                    del usr[f"name__{self.name}__"]
+                    del usr[f"password__{self.name}__"]
+                    del usr[f"rules__{self.name}__"]
+                    with open(self.database_users, "w", encoding="UTF-8") as f:
+                        usr = json.dump(usr, f)
+                    return "Name change sucs"
             elif "password" in dc:
                 password = dc["password"]
                 with open(self.database_users, "r", encoding="UTF-8") as f:
