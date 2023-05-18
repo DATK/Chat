@@ -31,8 +31,8 @@ def read():
     return f"Now using this ip: {a[0:b]}"
 
 
-x = input("Read or input data?(1-read,2-input): ")
-if x == "1":
+x = input("Read or input data?(1-input, 2-read): ")
+if x == "2":
     print(read())
     a = input("....")
 else:

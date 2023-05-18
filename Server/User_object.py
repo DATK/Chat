@@ -9,7 +9,7 @@ class User:
                       "CREATE": False, "ADMIN": False}
         self.password = password
         self.name = name
-        self.database_users = "db_users.txt"
+        self.database_users = "db_users.json"
         self.db = {f"name__{self.name}__": self.name,
                    f"password__{self.name}__": self.password, f"rules__{self.name}__": self.rules}
 
