@@ -11,7 +11,13 @@ class BOT():
 
     def reg(self):
         self.snd.reg(self.name, self.password)
-
+        
+    def chek_reg(self):
+        if self.snd.ins(self.name,self.password)=="bad":
+            self.name=self.change_name()
+            self.password=self.change_pas()
+            self.reg()
+    
     def change_name(self):
         arr="qwertyuioupiasfdghdfkjhlzcxvbnmQWERTYUIOASDFGHJKLZXCVBNMQWERTYUIукенапрчывормоагневсмбрио"
         name = f"{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}"
@@ -41,44 +47,30 @@ class BOT():
         return sms
     
 
-def test(slp):
+def test():
     from time import sleep
     arr = "qewrteyuiouplkkjhjghgfdfsddadxvbcvnmbknlkWERTYUOIPIOPKLJKHJGFDFSDFXCVHBKJ"
     name = f"{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}"
     password = f"{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}{arr[randint(0,len(arr)-1)]}"
     bot=BOT(name,password)
     bot.reg()
-    if slp=="1":
-        x=int(input("Введите задержку(В секундах):"))
-        while True:
-            sms="sms"
-            move=randint(1,3)
-            if move==1:
-                name=bot.change_name()
-            elif move==2:
-                password=bot.change_pas()
-            elif move==3:
-                sms=bot.write()
-            print(f"""name:{name}
+    x=int(input("Введите задержку(В секундах):"))
+    while True:
+        bot.chek_reg()
+        sms="sms"
+        move=randint(1,3)
+        if move==1:
+            name=bot.change_name()
+        elif move==2:
+            password=bot.change_pas()
+        elif move==3:
+            sms=bot.write()
+        print(f"""name:{name}
+
 move: {move}
 password:{password}
 sms: {sms}
 ###############################""")
-            sleep(x)
-    else:
-        while True:
-            sms="sms"
-            move=randint(1,3)
-            if move==1:   
-                name=bot.change_name()
-            elif move==2:
-                password=bot.change_pas()
-            elif move==3:
-                sms=bot.write()
-            print(f"""name:{name}
-move: {move}
-password:{password}
-sms: {sms}
-###############################""")
-sp=input("1-с задержкой, 2 без задержки: ")
-test(sp)
+        sleep(x)
+        
+test()

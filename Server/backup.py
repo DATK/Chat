@@ -20,5 +20,5 @@ import time
 while True:
     if read()=="Error":
         fix()
-    time.sleep(2)
+    time.sleep(1)
     
