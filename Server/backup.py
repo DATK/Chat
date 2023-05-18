@@ -15,14 +15,10 @@ def fix():
         a=json.load(f)
     with open("db_users.json","w",encoding="UTF-8") as f:
         json.dump(a,f)
-        
+     
 import time
 while True:
     if read()=="Error":
-        print("""######################
-              ERROR FIXING
-#######################""")
         fix()
-    print("Normal working")
     time.sleep(2)
     

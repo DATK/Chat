@@ -1,9 +1,14 @@
-To start:
-start server and start config.py and change ip.
+###################
+Сервер:
+запустить srv_start
+все
+Для работы чата:
+Запустить файл config.py
+Ввести там адрес сервера в формате http://xxx.xxx.xx.xx:port
+или http://adres
+далее запуск chat.py
 
-now in local on all pc you start starter.py, before input first messange, start get_messange.py
-all
-in starter you write
-from get... you read
-
-Location of Server better change in another folder
+для чтения:
+1) зарегаться
+2) получить возможность читать
+3) запустить get_messange.py
