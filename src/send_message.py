@@ -20,11 +20,11 @@ class Send_ms:
         self.url_rl = url_rl
         self.url_func = url_func
 
-    def send(self, text, id):
-        r.post(f"{self.url_post}/{id}", json={'messange': text})
+    def send(self, text, id,name,password):
+        r.post(f"{self.url_post}/{id}", json={'messange': text,"name":name,"password":password})
 
     def reg(self, name, password):
-        r.post(self.url_reg, json={"name": name, "password": password})
+        return r.post(self.url_reg, json={"name": name, "password": password}).text
 
     def ins(self, name, password):
         if r.post(self.url_in, json={"name": name, "password": password}).text == "Sucs":

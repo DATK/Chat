@@ -3,38 +3,12 @@ import time
 from src import sh
 import os
 
-
 s = sm.Send_ms()
 
-
-def reg():
-    print("------------------REG----------------")
-    name = input("Enter yor name: ")
-    password = input("Enter password: ")
-    password = sh.cezar(text=password, key=5)
-    s.reg(name, password)
-    print("Sucses reg")
-    print("------------------REG----------------")
-
-
-def chek_rules(name, password):
-    return s.get_rl(name, password)
-
-
-def change(js):
-    print("Login in acount>>> ")
-    name = input("Enter your name: ")
-    password = input("Enter password: ")
-    password = sh.cezar(text=password, key=5)
-    json = {"name": name, "password": password, "move": js}
-    return s.funcs(json)
-
-
-def work(name, password):
-    ruls = chek_rules(name, password)
+def chat(name,password,rls):
     with open(r"C:\Users\Public\Documents\rl.txt", "w", encoding="UTF-8") as f:
-        f.write(str(ruls["READ"]))
-    if ruls["WRITE"] == True:
+        f.write(str(rls["READ"]))
+    if rls["WRITE"] == True:
         id = input("Enter id: ")
         with open(r"C:\Users\Public\Documents\id.txt", "w", encoding="UTF-8") as f:
             f.write(id)
@@ -45,7 +19,7 @@ def work(name, password):
             text = "_"+name+"_"+"told_>>>"+text
             text_s = sh.cezar(text=text, key=3)
             try:
-                s.send(text=text_s, id=id)
+                s.send(text=text_s, id=id,name=name,password=password)
             except:
                 print("Try to connetct srver-->")
                 time.sleep(5)
@@ -53,78 +27,102 @@ def work(name, password):
         print("You can't write messange")
         input()
 
-
-def inp():
-    print("------------------IN----------------")
-    name = input("Enter your name: ")
-    password = input("Enter password: ")
-    print("------------------IN----------------")
-    password = sh.cezar(text=password, key=5)
-    if s.ins(name, password) == "sc":
-        print("Sucses inp")
-        work(name, password)
-    else:
-        print("Password or login not that")
+def change(name, password, js):
+    json = {"name": name, "password": password, "move": js}
+    return s.funcs(json)
 
 
-def menu():
-    print("""1. Registration
-2. Login in and start chat
-3. Change your name
-4. Change password
-5. Delete user
-6. Try to up rules""")
+def menu(name, password):
+    rls=chek_rules(name, password)
+    print("""1. Чат
+2. Сменить логин(имя)
+3. Сменить пароль
+4. Удалить аккаунт
+5. Повышение прав
+6. Выйти из приложения""")
     c = input("Enter number(or '/exit' to quit): ")
     if c == "1":
-        reg()
-        input("Enter to back to menu>>> ")
-    elif c == "2":
-        inp()
-        input("Enter to back to menu>>> ")
-    elif c == '3':
-        name = input("Enter new name: ")
-        js = {"name": name}
-        print(change(js))
-        input("Enter to back to menu>>> ")
-    elif c == "4":
-        a = input("Sure?(yes/no): ").lower()
-        if a == "yes":
-            password = input("Enter new password: ")
-            password = sh.cezar(text=password, key=5)
+        chat(name,password,rls)
+    elif c == '2':
+        a=input("Уверены(yes/no):")
+        if a == "yes" or a == "y" or a == "yea":
+            name_n = input("Введите новый логин: ")
+            js = {"name": name_n}
+            print(change(name,password,js))
+            name=name_n
+            input("Вернутся в меню>>> ")
+    elif c == "3":
+        a = input("Уверены?(yes/no): ").lower()
+        if a == "yes" or a == "y" or a == "yea":
+            password_n= input("Введите новый пароль: ")
+            password_n = sh.cezar(text=password_n, key=5)
             js = {"password": password}
-            print(change(js))
-            input("Enter to back to menu>>> ")
+            print(change(name,password,js))
+            password=password_n
+            input("Вернутся в меню>>> ")
+    elif c == "4":
+        a = input("Уверены?(yes/no): ").lower()
+        if a == "yes" or a == "y" or a == "yea":
+            js = {"del": True}
+            print(change(name,password,js))
+            input("Вернутся в меню>>> ")
+            os.system('CLS')
+            vhod()
     elif c == "5":
-        a = input("Sure?(yes/no): ").lower()
-        if a == "yes":
-            js={"del":True}
-            print(change(js))
-            input("Enter to back to menu>>> ")
-    elif c == "6":
-        a=input("""1. READ
+        a = input("""1. READ
 2. WRITE
 3. READ_WRITE: """)
-        if a=="1":
+        if a == "1":
             js = {"READ": True}
-            print(change(js))
-        elif a=="2":
-             js = {"WRITE": True}
-             print(change(js))
-        elif a=="3":
-             js = {"R_W": True}
-             print(change(js))
+            print(change(name,password,js))
+        elif a == "2":
+            js = {"WRITE": True}
+            print(change(name,password,js))
+        elif a == "3":
+            js = {"R_W": True}
+            print(change(name,password,js))
         else:
-            print("1 or 2 or 3")
-        input("Enter to back to menu>>> ")     
-        
-    os.system('CLS') 
+            print("1 или 2 или 3")
+        input("Вернутся в меню>>> ")
+    elif c=="6":
+        input("Нажмите Ентер")
+        exit()
+    os.system('CLS')
+    menu(name,password)
     return c
 
 
-def main_loop():
-    while menu() != "/exit":
-        menu()
-    input("Bye")
+def chek_rules(name, password):
+    return s.get_rl(name, password)
 
 
-main_loop()
+def vhod():
+    q = input("""1. Регистрация
+2. Войти в аккаунт
+>>> """)
+    if q == "1":
+        name = input("Введите логин: ")
+        password = input("Введите пароль: ")
+        password = sh.cezar(text=password, key=5)
+        print(s.reg(name, password))
+        print("#######################")
+        os.system('CLS')
+        input("Нажмите Ентер")
+        vhod()
+    elif q == "2":
+        name = input("Введите логин: ")
+        password = input("Введите пароль: ")
+        password = sh.cezar(text=password, key=5)
+        if s.ins(name, password) == "sc":
+            os.system('CLS')
+            menu(name, password)
+        else:
+            input("Пароль или логин с ошибкой...")
+            os.system('CLS')
+            vhod()
+    else:
+        os.system('CLS')
+        vhod()
+
+
+vhod()

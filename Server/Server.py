@@ -33,12 +33,13 @@ def reg():
     usr = User(name=name, password=password)
     if usr.chek_usr() == True:
         usr.add_to_db()
+        return "Sucs"
     else:
-        return "Another name"
-    return "Sucs"
+        return "Zanyato"
+    
 
 
-@app.route("/in/weqff/23rfew", methods=['POST', "GET"])
+@app.route("/in/weqff/23rfew", methods=['POST'])
 def inp():
     name = request.json["name"]
     password = request.json["password"]
@@ -55,11 +56,21 @@ def inp():
 @app.route("/API/fr2/<path:id>", methods=['POST'])
 def messeage(id):
     # print(request.json)
-    if len(request.json["messange"]) >= 501:
-        add_text_to_file(txt='brwuorthu)ыыunhwwhtv', file=id+".txt")
+    name = request.json["name"]
+    password = request.json["password"]
+    text=request.json["messange"]
+    usr = User(name=name, password=password)
+    if usr.chek_user() == True:
+        if usr.rules_s()["WRITE"]==True:
+            if len(text) >= 501:
+                add_text_to_file(txt='brwuorthu)ыыunhwwhtv', file=id+".txt")
+            else:
+                add_text_to_file(txt=text, file=id+".txt")
+            return "Sory, it is not working"
+        else:
+            return "Cant write"
     else:
-        add_text_to_file(txt=request.json["messange"], file=id+".txt")
-    return "Sory, it is not working"
+        return "no this user"
 
 
 @app.route("/get/rules", methods=['POST'])
