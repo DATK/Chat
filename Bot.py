@@ -43,7 +43,7 @@ class BOT():
             sms+=alf[randint(0,len(alf)-1)]
         id="bot"
         for i in range(randint(0,200)):
-            self.snd.send(sms,id)
+            self.snd.send(sms,id,self.name,self.password)
         return sms
     
 
