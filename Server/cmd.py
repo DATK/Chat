@@ -15,10 +15,18 @@ def change_rl(name,rl):
 def gtusr():
     with open("db_users_bcp.json","r",encoding="UTF-8") as f:
         dc=json.load(f)
+    dcr=[]
     for i in dc:
-        if i%3==0:
-            print(dc[i])
+        if i[:6]=="name__":
+            dcr.append(dc[i])
+        else:
+            continue
+    return dcr
 
+def delusr():
+    name=input("Enter name: ")
+    usr=User(name=name)
+    usr.del_user()
 
 def inp(cmd):
     try:
@@ -31,7 +39,11 @@ def inp(cmd):
             u=User(name=name)
             print(u.rules_s())
         elif cmd=="/getusers":
-            gtusr()
+            rs=gtusr()
+            for i in range(len(rs)):
+                print(f"{i+1}. {rs[i]}")
+        elif cmd=="/deluser":
+            delusr()
     except:
         print("Error")
         

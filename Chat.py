@@ -106,8 +106,8 @@ def vhod():
         password = sh.cezar(text=password, key=5)
         print(s.reg(name, password))
         print("#######################")
-        os.system('CLS')
         input("Нажмите Ентер")
+        os.system('CLS')
         vhod()
     elif q == "2":
         name = input("Введите логин: ")
