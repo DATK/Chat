@@ -2,13 +2,13 @@ from flask import Flask, request
 from User_object import User
 
 
-def read_mes_file(file="db.txt"):
+def read_mes_file(file="./ids/db.txt"):
     with open(file, "r", encoding="UTF-8") as f:
         txt = f.read()
     return txt
 
 
-def add_text_to_file(file="db.txt", txt=""):
+def add_text_to_file(file="./ids/db.txt", txt=""):
     with open(file, "w", encoding="UTF-8") as f:
         f.write(txt)
 
@@ -63,9 +63,9 @@ def messeage(id):
     if usr.chek_user() == True:
         if usr.rules_s()["WRITE"]==True:
             if len(text) >= 501:
-                add_text_to_file(txt='brwuorthu)ыыunhwwhtv', file=id+".txt")
+                add_text_to_file(txt='brwuorthu)ыыunhwwhtv', file=f"./ids/{id}.txt")
             else:
-                add_text_to_file(txt=text, file=id+".txt")
+                add_text_to_file(txt=text, file=f"./ids/{id}.txt")
             return "Sory, it is not working"
         else:
             return "Cant write"
@@ -83,7 +83,7 @@ def rl():
 
 @app.route("/API/fr2rd/<path:id>", methods=["GET"])
 def messeage_read(id):
-    return read_mes_file(file=id+".txt")
+    return read_mes_file(file=f"./ids/{id}.txt")
 
 
 @app.route("/chng/qwdas/2312/fewsd33/s", methods=['POST'])
