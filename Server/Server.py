@@ -63,7 +63,7 @@ def messeage(id):
     if usr.chek_user() == True:
         if usr.rules_s()["WRITE"]==True:
             if len(text) >= 501:
-                add_text_to_file(txt='brwuorthu)ыыunhwwhtv', file=f"./ids/{id}.txt")
+                add_text_to_file(txt='brwuorthu)ыыunhwwhtv', file=f"/ids/{id}.txt")
             else:
                 add_text_to_file(txt=text, file=f"./ids/{id}.txt")
             return "Sory, it is not working"

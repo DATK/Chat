@@ -5,6 +5,7 @@ import requests as r
 import sys
 sys.path.insert(1, 'D:\chat_flaks\src')
 import sh
+print("/help to help")
 def change_rl(name,rl):
     try:
         znach=input("True or False: ")
@@ -59,7 +60,9 @@ def inp(cmd):
         elif cmd=="/getmes":
             id=input("Enter id: ")
             a=r.get(f"http://localhost:5000/API/fr2rd/{id}").text
-            print(sh.cezar_unsc(text=a,key=3))  
+            print(sh.cezar_unsc(text=a,key=3))
+        elif cmd=="/help":
+            print("/rls,/getmes,/deluser,/getrls,/ids")  
     except:
         print("Error")
         
