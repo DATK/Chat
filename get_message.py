@@ -19,6 +19,8 @@ url_id = f"{url_get}/{id}"
 
 
 def reading(read):
+    with open(r"C:\Users\Public\Documents\rl.txt", "r", encoding="UTF-8") as f:
+        read=f.read()
     if read=="True":
         while True:
             time.sleep(3)
