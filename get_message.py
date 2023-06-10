@@ -16,7 +16,7 @@ with open(r"C:\Users\Public\Documents\id.txt", "r", encoding="UTF-8") as f:
     id = f.read()
 
 url_id = f"{url_get}/{id}"
-
+        
 
 def reading(read):
     with open(r"C:\Users\Public\Documents\rl.txt", "r", encoding="UTF-8") as f:
@@ -33,7 +33,8 @@ def reading(read):
             print("### ", f1, " ###")
     else:
         print("You can't read")
-        input()
+        time.sleep(3)
+        reading(read)
 
 if __name__=="__main__":
     reading(read)

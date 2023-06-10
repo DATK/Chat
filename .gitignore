@@ -4,3 +4,5 @@ Starter.py
 User_object.cpython-311.pyc
 backup.py
 bot.txt
+db_users.json
+db_users_bcp.json
