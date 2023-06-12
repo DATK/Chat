@@ -7,6 +7,12 @@ with open(r"C:\Users\Public\Documents\rl.txt", "r", encoding="UTF-8") as f:
     read=f.read()
 
 
+
+def alf():
+    with open("./files/alf.txt","r",encoding="UTF_8") as f:
+        alfa=f.read()
+    return alfa
+
 with open(r"C:/Users/Public/Documents/urls.txt", "r", encoding="UTF-8") as fi:
     urls = json.load(fi)
 
@@ -29,7 +35,7 @@ def reading(read):
             except:
                 print("No connect, try to connect again")
                 continue
-            f1 = sh.cezar_unsc(text=f, key=3)
+            f1 = sh.cezar_unsc(text=f, key=3,alf=alf())
             print("### ", f1, " ###")
     else:
         print("You can't read")

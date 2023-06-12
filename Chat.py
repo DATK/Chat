@@ -5,6 +5,12 @@ import os
 
 s = sm.Send_ms()
 
+
+def alf():
+    with open("./files/alf.txt","r",encoding="UTF_8") as f:
+        alfa=f.read()
+    return alfa
+
 def chat(name,password,rls):
     with open(r"C:\Users\Public\Documents\rl.txt", "w", encoding="UTF-8") as f:
         f.write(str(rls["READ"]))
@@ -17,7 +23,7 @@ def chat(name,password,rls):
             text = input("Input text >>>>>> ")
             textrt = text
             text = "_"+name+"_"+"told_>>>"+text
-            text_s = sh.cezar(text=text, key=3)
+            text_s = sh.cezar(text=text, key=3,alf=alf())
             try:
                 s.send(text=text_s, id=id,name=name,password=password)
             except:
@@ -55,7 +61,7 @@ def menu(name, password):
         a = input("Уверены?(yes/no): ").lower()
         if a == "yes" or a == "y" or a == "yea":
             password_n= input("Введите новый пароль: ")
-            password_n = sh.cezar(text=password_n, key=5)
+            password_n = sh.cezar(text=password_n, key=5,alf=alf())
             js = {"password": password}
             print(change(name,password,js))
             password=password_n
@@ -112,7 +118,7 @@ def vhod():
     elif q == "2":
         name = input("Введите логин: ")
         password = input("Введите пароль: ")
-        password = sh.cezar(text=password, key=5)
+        password = sh.cezar(text=password, key=5,alf=alf())
         if s.ins(name, password) == "sc":
             os.system('CLS')
             menu(name, password)
