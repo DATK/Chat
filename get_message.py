@@ -4,43 +4,43 @@ import time
 import json
 
 with open(r"C:\Users\Public\Documents\rl.txt", "r", encoding="UTF-8") as f:
-    read=f.read()
-
-
-
-def alf():
-    with open("./files/alf.txt","r",encoding="UTF_8") as f:
-        alfa=f.read()
-    return alfa
+    read = f.read()
 
 with open(r"C:/Users/Public/Documents/urls.txt", "r", encoding="UTF-8") as fi:
     urls = json.load(fi)
 
-url_get = urls["get"]
-
 with open(r"C:\Users\Public\Documents\id.txt", "r", encoding="UTF-8") as f:
     id = f.read()
 
+url_get = urls["get"]
 url_id = f"{url_get}/{id}"
-        
 
-def reading(read):
-    with open(r"C:\Users\Public\Documents\rl.txt", "r", encoding="UTF-8") as f:
-        read=f.read()
-    if read=="True":
-        while True:
-            time.sleep(3)
-            try:
-                f = r.get(url_id).text
-            except:
-                print("No connect, try to connect again")
-                continue
-            f1 = sh.cezar_unsc(text=f, key=3,alf=alf())
-            print("### ", f1, " ###")
-    else:
-        print("You can't read")
-        time.sleep(3)
-        reading(read)
 
+def alf():
+    with open("./files/alf.txt", "r", encoding="UTF_8") as f:
+        alfa = f.read()
+    return alfa
+
+
+def rd_tmp():
+    with open("tmp.json", "r", encoding="UTF-8") as f:
+        js = json.load(f)
+    return js
+
+
+
+def getmes():
+    js=rd_tmp()
+    try:
+        f=r.post(url_id,json=js).text
+    except:
+        print("No connect, try to connect again")
+    f1 = sh.cezar_unsc(text=f, key=3,alf=alf())
+    print("### ", f1, " ###")
+    time.sleep(3)
+    
 if __name__=="__main__":
-    reading(read)
+    while True:
+        getmes()
+
+

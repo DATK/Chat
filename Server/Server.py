@@ -81,9 +81,18 @@ def rl():
     return usr.rules_s()
 
 
-@app.route("/API/fr2rd/<path:id>", methods=["GET"])
+@app.route("/API/fr2rd/<path:id>", methods=["POST"])
 def messeage_read(id):
-    return read_mes_file(file=f"./ids/{id}.txt")
+    name=request.json["name"]
+    password = request.json["password"]
+    usr=User(name=name,password=password)
+    if usr.chek_user() == True:
+        if usr.rules_s()["READ"]==True:
+            return read_mes_file(file=f"./ids/{id}.txt")
+        else:
+            return ""
+    else:
+        return ""
 
 
 @app.route("/chng/qwdas/2312/fewsd33/s", methods=['POST'])

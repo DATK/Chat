@@ -2,9 +2,16 @@ from src import send_message as sm
 import time
 from src import sh
 import os
+import json
+
 
 s = sm.Send_ms()
 
+
+def tmp_files(name,pas):
+    with open("tmp.json","w",encoding="UTF-8") as f:
+        json.dump({"name":name,"password":pas},f)
+    
 
 def alf():
     with open("./files/alf.txt","r",encoding="UTF_8") as f:
@@ -56,6 +63,7 @@ def menu(name, password):
             js = {"name": name_n}
             print(change(name,password,js))
             name=name_n
+            tmp_files(name,password)
             input("Вернутся в меню>>> ")
     elif c == "3":
         a = input("Уверены?(yes/no): ").lower()
@@ -65,6 +73,7 @@ def menu(name, password):
             js = {"password": password}
             print(change(name,password,js))
             password=password_n
+            tmp_files(name,password)
             input("Вернутся в меню>>> ")
     elif c == "4":
         a = input("Уверены?(yes/no): ").lower()
@@ -121,6 +130,7 @@ def vhod():
         password = sh.cezar(text=password, key=5,alf=alf())
         if s.ins(name, password) == "sc":
             os.system('CLS')
+            tmp_files(name,password)
             menu(name, password)
         else:
             input("Пароль или логин с ошибкой...")
