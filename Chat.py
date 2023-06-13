@@ -9,7 +9,7 @@ s = sm.Send_ms()
 
 
 def tmp_files(name,pas):
-    with open("tmp.json","w",encoding="UTF-8") as f:
+    with open("tmp.txt","w",encoding="UTF-8") as f:
         json.dump({"name":name,"password":pas},f)
     
 

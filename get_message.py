@@ -23,7 +23,7 @@ def alf():
 
 
 def rd_tmp():
-    with open("tmp.json", "r", encoding="UTF-8") as f:
+    with open("tmp.txt", "r", encoding="UTF-8") as f:
         js = json.load(f)
     return js
 
