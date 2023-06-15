@@ -1,10 +1,8 @@
 import json
 from User_object import User
 import os
-import requests as r
-import sys
-sys.path.insert(1, 'D:\chat_flaks\src')
-import sh
+
+
 print("/help to help")
 def change_rl(name,rl):
     try:
@@ -56,13 +54,8 @@ def inp(cmd):
                 for entry in listOfEntries:
                     if entry.is_file():
                         print(entry.name[:-4])
-                        
-        elif cmd=="/getmes":
-            id=input("Enter id: ")
-            a=r.get(f"http://localhost:5000/API/fr2rd/{id}").text
-            print(sh.cezar_unsc(text=a,key=3))
         elif cmd=="/help":
-            print("/rls,/getmes,/deluser,/getrls,/ids")  
+            print("/rls,/deluser,/getrls,/ids")  
     except:
         print("Error")
         
