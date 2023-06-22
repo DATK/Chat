@@ -6,3 +6,5 @@ backup.py
 bot.txt
 db_users.json
 db_users_bcp.json
+srv_start.bat
+ngrok.exe
