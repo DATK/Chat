@@ -69,7 +69,7 @@ def menu(name, password):
         a = input("Уверены?(yes/no): ").lower()
         if a == "yes" or a == "y" or a == "yea":
             password_n= input("Введите новый пароль: ")
-            password_n = sh.cezar(text=password_n, key=5,alf=alf())
+            password_n = sh.hash(password_n)
             js = {"password": password}
             print(change(name,password,js))
             password=password_n
@@ -118,7 +118,7 @@ def vhod():
     if q == "1":
         name = input("Введите логин: ")
         password = input("Введите пароль: ")
-        password = sh.cezar(text=password, key=5)
+        password = sh.hash(password)
         print(s.reg(name, password))
         print("#######################")
         input("Нажмите Ентер")
@@ -127,7 +127,7 @@ def vhod():
     elif q == "2":
         name = input("Введите логин: ")
         password = input("Введите пароль: ")
-        password = sh.cezar(text=password, key=5,alf=alf())
+        password = sh.hash(password)
         if s.ins(name, password) == "sc":
             os.system('CLS')
             tmp_files(name,password)
